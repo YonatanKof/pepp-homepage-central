@@ -1,17 +1,43 @@
 @use "./vars" as *;
 
-$font-family--body: "Inter", -apple-system, system-ui, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Arial, sans-serif;
+$font-family--body: "Inter", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 $font-family--title: "Montserrat", Georgia, serif;
 $font-family--code: "Source Code Pro", Consolas, Monaco, "Andale Mono";
+$font-family--hand: "Permanent Marker", Brush Script MT;
 
+$font-weight--light: 200;
 $font-weight--normal: 400;
 $font-weight--bold: 600;
-$font-weight--bolder: 900;
+$font-weight--bolder: 800;
+
+:root {
+	--base-font-size: 16px;
+	@media screen and (min-width: $screen-2xl) {
+		--base-font-size: 20px;
+	}
+	@media screen and (min-width: $screen-xl) and (max-width: $screen-2xl){
+		--base-font-size: 18px;
+	}
+	@media screen and (max-width: $screen-md) {
+		--base-font-size: 14px;
+	}
+	@media screen and (max-width: $screen-sm) {
+		--base-font-size: 12px;
+	}
+	--font-size-00: calc(var(--base-font-size) * 0.75);
+	--font-size-01: calc(var(--base-font-size) * 0.875);
+	--font-size-02: var(--base-font-size);
+	--font-size-03: calc(var(--base-font-size) * 1.125);
+	--font-size-04: calc(var(--base-font-size) * 1.25);
+	--font-size-05: calc(var(--base-font-size) * 1.5);
+	--font-size-06: calc(var(--base-font-size) * 2);
+	--font-size-07: calc(var(--base-font-size) * 2.5);
+	--font-size-08: calc(var(--base-font-size) * 3);
+}
 
 * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 // @supports (font-variation-settings: normal) {
@@ -23,28 +49,28 @@ $font-weight--bolder: 900;
 
 html,
 body {
-    color: $color-system-1-full;
-    font-family: $font-family--body;
-    font-weight: $font-weight--normal;
-    font-size: $font-size;
-    line-height: 1.2;
-    cursor: default;
+	font-size: var(--base-font-size);
+	color: $color-system-1-full;
+	font-family: $font-family--body;
+	font-weight: $font-weight--normal;
+	line-height: 1.2;
+	cursor: default;
 }
 
 //  Font weight
 // ------------------------
 strong,
 .bold {
-    font-weight: $font-weight--bold !important;
+	font-weight: $font-weight--bold !important;
 }
 .bolder {
-    font-weight: $font-weight--bolder !important;
+	font-weight: $font-weight--bolder !important;
 }
 .dimmed {
-    opacity: 0.7;
+	opacity: 0.7;
 }
 .smaller {
-    font-size: 80%;
+	font-size: 80%;
 }
 
 h6,
@@ -53,92 +79,120 @@ h4,
 h3,
 h2,
 h1 {
-    font-family: $font-family--title;
-    line-height: 1.15;
+	font-family: $font-family--title;
+	line-height: 1.05;
 }
 p,
-a, 
+a,
 button {
-    font-family: $font-family--body;
+	font-family: $font-family--body;
+	font-size: var(--font-size-02);
+	line-height: 1;
 }
-p {
-    font-size: $font-size-2-regular;
-    line-height: 1.25;
-}
-
 a {
-    text-decoration: none;
-    color: $color-link;
-    cursor: pointer;
-    &.disable,
-    &:disabled {
-        pointer-events: none;
-    }
+	text-decoration: none;
+	color: $color-link;
+	cursor: pointer;
+	&.disable,
+	&:disabled {
+		pointer-events: none;
+	}
 }
 
-.router-link-active{
-  font-weight: 600;
-  text-decoration: underline;
+.router-link-active {
+	font-weight: $font-weight--bold;
+	text-decoration: underline;
 }
 
-.title-1-xs {
-    font-weight: 600;
-    font-size: $font-size-2-regular;
+.body-2xs,
+.body-xs,
+.body-sm,
+.body-md,
+.body-lg,
+.body-xl,
+.body-2xl,
+.body-3xl {
+	font-family: $font-family--body;
 }
-.title-2-sm {
-    font-weight: 600;
-    font-size: $font-size-3-big;
-}
-.title-4-lg {
-    font-weight: 700;
-    font-size: $font-size-7-Xlarge;
-    // color: white;
-    line-height: 1.1em;
-    @media screen and (max-width: $screen-lg) {
-        font-size: $font-size-6-Xlarge;
-    }
-    @media screen and (max-width: $screen-sm) {
-        font-size: $font-size-7-Xlarge;
-    }
-}
-
 .body-2xs {
-    font-size: $font-size-0-smaller;
+	font-size: var(--font-size-00);
 }
 .body-xs {
-    font-size: $font-size-1-small;
+	font-size: var(--font-size-01);
 }
 .body-sm {
-    font-size: $font-size-3-big;
+	font-size: var(--font-size-03);
 }
 .body-md {
-    font-size: $font-size-4-bigger;
+	font-size: var(--font-size-04);
 }
 .body-lg {
-    font-size: $font-size-5-large;
+	font-size: var(--font-size-05);
 }
 .body-xl {
-    font-size: $font-size-6-Xlarge;
+	font-size: var(--font-size-06);
 }
 .body-2xl {
-    font-size: $font-size-7-Xlarge;
+	font-size: var(--font-size-07);
+}
+.body-3xl {
+	font-size: var(--font-size-08);
 }
 
-// .title-xs {
-//     font-size: 16px;
-// }
-// .title-sm {
-//     font-size: 20px;
-// }
-// .title-md {
-//     font-size: 24px;
-// }
-// .title-lg {
-//     font-size: 28px;
-// }
-// .title-xl {
-//     font-size: 32px;
-// }
-// .title-2xl {
-//     font-size: 40px;
-// }
+.title-xs,
+.title-sm,
+.title-md,
+.title-lg,
+.title-xl,
+.title-2xl,
+.title-3xl {
+	font-weight: $font-weight--bold;
+	font-family: $font-family--title;
+	color: white;
+}
+.title-xs {
+	font-size: var(--font-size-01);
+}
+.title-sm {
+	font-size: var(--font-size-03);
+}
+.title-md {
+	font-size: var(--font-size-04);
+}
+.title-lg {
+	font-size: var(--font-size-05);
+}
+.title-xl {
+	font-size: var(--font-size-06);
+}
+.title-2xl {
+	font-size: var(--font-size-07);
+}
+.title-3xl {
+	font-size: var(--font-size-08);
+}
+
+//! Weights
+
+.f-weight-light {
+	font-weight: $font-weight--light;
+}
+.f-weight-normal {
+	font-weight: $font-weight--normal;
+}
+.f-weight-bold {
+	font-weight: $font-weight--bold;
+}
+.f-weight-bolder {
+	font-weight: $font-weight--bolder;
+}
+
+//!
+
+.f-family-hand {
+	font-family: $font-family--hand;
+}
+
+.text-center {
+	text-align: center;
+}

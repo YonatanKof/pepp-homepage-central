@@ -9,7 +9,7 @@
 		:fill="iconColor"
 	>
 		<slot />
-		<rect id="bounding-box" fill="none" width="100%" height="100%"/>
+		<rect id="bounding-box" fill="none" width="100%" height="100%" />
 	</svg>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 		},
 		iconColor: {
 			type: String,
-			default: "red",
+			default: "var(--color-system-10)",
 		},
 	},
 };
@@ -34,9 +34,11 @@ export default {
 
 <style lang="scss" scoped>
 svg {
+	font-size: var(--base-font-size);
+	fill-opacity: 0.85;
 	transition: fill 0.35s ease-out;
 	&:hover {
-		fill: palevioletred;
+		fill-opacity: 1;
 	}
 }
 p svg {
